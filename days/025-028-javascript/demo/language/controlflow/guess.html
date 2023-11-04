@@ -20,9 +20,42 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  const secretNumber = getRandomInt(1, 15);
+  const secretNumber = 100; // getRandomInt(1, 15);
 
-  // you code
+  function guessingGame() {
+    
+    let attempts = 0;
+
+    while(true) {
+
+      let guess = prompt('Guess a number: ');
+
+      if(guess === null || guess === 'q') break;
+      else {
+
+        guess = parseInt(guess);
+
+        if(typeof guess !== 'number') continue;
+        else if(guess === secretNumber) {
+          console.log('You guessed it!');
+          break;
+        }
+        else if(guess < secretNumber) console.log('Too low');
+        else if(guess > secretNumber) console.log('Too high');
+      }
+
+      attempts += 1;
+
+      if(attempts === 5) {
+        console.log(`${attempts} attempts over`)
+        break;
+      }
+    }
+
+  }
+
+  guessingGame();
+  
 
   </script>
 </body>
